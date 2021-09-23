@@ -185,7 +185,7 @@ func (c *Container) StopWithTimeout(timeout uint) error {
 	}
 
 	if !c.ensureState(define.ContainerStateCreated, define.ContainerStateRunning) {
-		return errors.Wrapf(define.ErrCtrStateInvalid, "can only stop created or running containers. %s is in state %s", c.ID(), c.state.State.String())
+		return errors.Wrapf(define.ErrCtrStateInvalid, "can only stop running containers. %s is in state %s", c.ID(), c.state.State.String())
 	}
 
 	return c.stop(timeout)
